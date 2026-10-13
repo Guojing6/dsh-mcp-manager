@@ -444,12 +444,12 @@ test('侧栏入口使用公开插槽托管，并具备工作区上方 Portal 与
     actions: { open() {} },
   };
   const fallback = entry.component(props);
-  assert.equal(fallback.props['aria-label'], 'MCP连接器', '首次定位前应保留 footer 降级入口');
+  assert.equal(fallback.props['aria-label'], '连接器', '首次定位前应保留 footer 降级入口');
   assert.equal(fallback.props['data-placement'], 'footer', '降级入口只应样式化自身，不能接管宿主槽位');
   assert.equal(fallback.props.children[0].props.className, 'mcpConnectorLauncherIcon');
   assert.equal(fallback.props.children[0].props['aria-hidden'], true);
   assert.equal(fallback.props.children[1].props.className, 'mcpConnectorLauncherLabel');
-  assert.equal(fallback.props.children[1].props.children, 'MCP连接器');
+  assert.equal(fallback.props.children[1].props.children, '连接器');
   assert.equal(topMount.dataset.mcpConnectorTopMount, 'true');
   assert.equal(topMount.nextSibling, workspaceSlot, '挂载点应紧邻工作区 slot 之前');
 
@@ -459,7 +459,7 @@ test('侧栏入口使用公开插槽托管，并具备工作区上方 Portal 与
   assert.equal(portal.node.props.children.props['data-placement'], 'top');
   entry.component({ ...props, wide: false });
   const collapsed = portal.node.props.children;
-  assert.equal(collapsed.props['aria-label'], 'MCP连接器');
+  assert.equal(collapsed.props['aria-label'], '连接器');
   assert.equal(collapsed.props.children[1], null, '折叠侧栏仅显示图标但保留可访问名称');
 
   const source = await readFile(new URL('../lib/client.js', import.meta.url), 'utf8');
@@ -489,7 +489,7 @@ test('DSH 0.2 优先注册 main 与原生 panellist，不创建 footer 降级入
   assert.ok(registrationOrder.indexOf('main') < registrationOrder.indexOf('sidebar.panellist'), 'main 必须先于可点击的行注册');
   assert.equal(entry.options.id, 'mcp-connector');
   assert.equal(entry.options.order, 40);
-  assert.equal(entry.options.label, 'MCP连接器');
+  assert.equal(entry.options.label, '连接器');
   assert.equal(main.options.key, 'mcp-connector');
   assert.equal(main.options.store, overlay.options.store, '原生面板与设置弹框应共用市场 Store');
   assert.equal(main.options.inject().presentation, 'panel');

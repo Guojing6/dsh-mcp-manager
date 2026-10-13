@@ -36,7 +36,7 @@ OAuth 是否可用取决于服务商的客户端注册、账号权限与授权�
 dsh plugin --profile web add dsh-mcp-connector
 ```
 
-安装或升级后完全重启 DeepSeek Harness Desktop 或 `dsh web`，然后打开左侧「MCP连接器」；也可从“设置 → 插件 → 插件配置 → MCP连接器”直接打开。
+安装或升级后完全重启 DeepSeek Harness Desktop 或 `dsh web`，然后打开左侧「连接器」；也可从“设置 → 插件 → 插件配置 → MCP连接器”直接打开。
 
 首次使用建议依次确认：连接已保存且范围正确 → “工具”页能找到预期工具与来源 → 在正常 DSH 会话中通过 Host 审批链完成一次服务商许可的只读调用。缓存可见不等于当前服务可调用。
 
@@ -86,7 +86,7 @@ dsh plugin --profile web add dsh-mcp-connector
 - 对话工具：`mcp_connector_catalog`、`connect`、`configure`、`import_json`、`export_config`、`snapshot`、`install_from_url`、`status`、`scope`、`health_check`、`policy`、`set_enabled`、`session_tools`、`disconnect`、`refresh_catalog`、`publish`、`tools_list`、`tool_search`、`tool_detail`。搜索/详情只做渐进式能力发现，不执行目标 MCP 工具。
 
 <!-- catalog-stats:start -->
-截至 2026-10-06，公共 Registry 已发布 109 条连接器描述；与随包的 4 张企查查卡片合并去重后，市场页可浏览 113 张卡片，覆盖企业数据、金融投资、法律合规、开发工具、办公协作、调研分析、设计创意、效率工具、其他 9 类。推荐位严格保留 4 张企查查卡片、北大法宝和 Wind，共 6 张；其他连接器按业务分类展示。Registry 可独立持续更新，实际数量以客户端刷新后的市场页签徽标和上方实时统计徽标为准。
+截至 2026-10-13，公共 Registry 已发布 109 条连接器描述，市场页可浏览 109 张卡片，覆盖企业数据、金融投资、法律合规、开发工具、办公协作、调研分析、设计创意、效率工具、其他 9 类，其中推荐位 2 张。本插件不再内置连接器卡片，市场内容完全来自远程 Registry。Registry 可独立持续更新，实际数量以客户端刷新后的市场页签徽标和上方实时统计徽标为准。
 <!-- catalog-stats:end -->
 
 ## 界面与演示
@@ -121,7 +121,7 @@ bash <(curl -fsSL https://raw.githubusercontent.com/duhu2000/dsh-mcp-connector/m
 
 ## 使用
 
-1. 点击左侧“MCP连接器”，或从“设置 → 插件 → 插件配置 → MCP连接器”点击“打开 MCP连接器”。
+1. 点击左侧“连接器”，或从“设置 → 插件 → 插件配置 → MCP连接器”点击“打开 MCP连接器”。
 2. 在市场中选择连接器，确认“当前项目”或“所有项目（全局）”，再完成授权或配置。
 3. 打开卡片详情，可点击示例 Prompt 的发送按钮，在当前工作区创建/复用空白会话并写入草稿。
 4. 在“已安装”或对话工具中查看、停用、恢复或断开连接。

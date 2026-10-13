@@ -36,7 +36,7 @@ Tool browsing does not execute target tools. Parameter summaries may omit comple
 dsh plugin --profile web add dsh-mcp-connector
 ```
 
-Fully restart DeepSeek Harness Desktop or `dsh web` after installation or upgrade, then open **MCP Connector** in the primary sidebar, or open it directly from **Settings → Plugins → Plugin Configuration → MCP Connector**.
+Fully restart DeepSeek Harness Desktop or `dsh web` after installation or upgrade, then open **Connectors** in the primary sidebar, or open it directly from **Settings → Plugins → Plugin Configuration → MCP Connector**.
 
 For a first successful use, confirm the connection and scope in Installed, find the expected tool and source in Tools, then complete one provider-permitted read-only call through the normal DSH Host approval flow. Cached visibility alone does not prove that a service is currently callable.
 
@@ -85,7 +85,7 @@ If the plugin helps you connect an MCP server faster, consider [starring the rep
 - Explicit, non-destructive migration from the two earlier Qichacha OAuth plugins, plus active-plugin conflict detection that blocks duplicate server management and credential overwrites.
 
 <!-- catalog-stats:start -->
-As of 2026-10-06, the public Registry publishes 109 connector descriptors. After merging and deduplicating them with the 4 bundled Qichacha cards, the Marketplace exposes 113 cards across 9 business categories. Recommendations remain limited to the four Qichacha cards, PKULaw, and Wind, for 6 featured cards in total. The Registry evolves independently; the badge shown after a client refresh and the live badges above are the authoritative current counts.
+As of 2026-10-13, the public Registry publishes 109 connector descriptors. The plugin no longer bundles connector cards, and the Marketplace exposes 109 cards across 9 business categories, with 2 featured cards. The Registry evolves independently; the badge shown after a client refresh and the live badges above are the authoritative current counts.
 <!-- catalog-stats:end -->
 
 ## Interface and demo
@@ -120,7 +120,7 @@ Run the same command again to upgrade. Fully quit and restart DeepSeek Harness D
 
 ## Usage
 
-1. Select **MCP Connector** in the primary sidebar, or choose **Open MCP Connector** from **Settings → Plugins → Plugin Configuration → MCP Connector**.
+1. Select **Connectors** in the primary sidebar, or choose **Open MCP Connector** from **Settings → Plugins → Plugin Configuration → MCP Connector**.
 2. Choose a connector, confirm **Current project** or **All projects (global)**, and complete authorization or configuration.
 3. Open its details to inspect tools or send an example prompt to a new conversation draft.
 4. Use Installed or the conversation tools to enable, disable, inspect, or disconnect a connection.
