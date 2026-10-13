@@ -32,20 +32,20 @@ The Traffic snapshot was collected through the official GitHub API on 2026-08-30
 | findharness | 1 | 1 |
 | 微信 | 1 | 1 |
 
-`Open Issues = 1` is the pre-intervention baseline. The documentation-scoped [`good first issue` #29](https://github.com/duhu2000/dsh-mcp-connector/issues/29) was created afterward as part of this round, so it must be counted as a change, not folded back into the baseline.
+`Open Issues = 1` is the pre-intervention baseline. The documentation-scoped [`good first issue` #29](https://github.com/Guojing6/dsh-mcp-manager/issues/29) was created afterward as part of this round, so it must be counted as a change, not folded back into the baseline.
 
 Recheck the quantitative baseline with:
 
 ```bash
-curl -fsSL https://api.npmjs.org/downloads/point/last-month/dsh-mcp-connector
-gh api repos/duhu2000/dsh-mcp-connector \
+curl -fsSL https://api.npmjs.org/downloads/point/last-month/dsh-mcp-manager
+gh api repos/Guojing6/dsh-mcp-manager \
   --jq '{stargazers_count,forks_count,subscribers_count,open_issues_count}'
-gh api repos/duhu2000/dsh-mcp-connector/releases/latest --jq '{tag_name,published_at}'
-gh api repos/duhu2000/dsh-mcp-connector/traffic/views
-gh api repos/duhu2000/dsh-mcp-connector/traffic/clones
-gh api repos/duhu2000/dsh-mcp-connector/traffic/popular/paths
-gh api repos/duhu2000/dsh-mcp-connector/traffic/popular/referrers
-npm view dsh-mcp-connector version
+gh api repos/Guojing6/dsh-mcp-manager/releases/latest --jq '{tag_name,published_at}'
+gh api repos/Guojing6/dsh-mcp-manager/traffic/views
+gh api repos/Guojing6/dsh-mcp-manager/traffic/clones
+gh api repos/Guojing6/dsh-mcp-manager/traffic/popular/paths
+gh api repos/Guojing6/dsh-mcp-manager/traffic/popular/referrers
+npm view dsh-mcp-manager version
 ```
 
 The npm download window ends on the previous UTC day. Save its returned `start` and `end` fields with the value. GitHub counters are cumulative snapshots and should include the capture timestamp. GitHub Traffic endpoints require repository push access and expose a rolling 14-day window, so archive each response at review time.

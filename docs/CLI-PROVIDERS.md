@@ -34,7 +34,7 @@ MCP 连接器原生支持 Streamable HTTP 和 stdio MCP。对于钉钉 `dws` 这
         "-y",
         "--legacy-peer-deps",
         "--package",
-        "dsh-mcp-connector@0.2.55",
+        "dsh-mcp-manager@0.2.55",
         "--package",
         "dingtalk-workspace-cli@1.0.61",
         "dsh-mcp-cli-bridge",

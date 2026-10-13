@@ -1,5 +1,5 @@
-url: https://github.com/duhu2000/dsh-mcp-connector
-name: duhu2000/dsh-mcp-connector
+url: https://github.com/Guojing6/dsh-mcp-manager
+name: Guojing6/dsh-mcp-manager
 category: tools
 description:
   en: 'MCP Connector for DeepSeek Harness: an MCP manager with one panel to connect servers, configure authorization, search tools across connections, and troubleshoot failures. Browse a continuously updated catalog of over one hundred connectors; filter by connection/server/status, inspect readable parameters and the last successful cache time, and rediscover tools. Supports OAuth 2.0 PKCE, API keys, stdio/HTTP, and mcpServers JSON import. Maintained by Qichacha/QCC.'

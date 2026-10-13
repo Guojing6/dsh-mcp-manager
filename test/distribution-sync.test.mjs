@@ -13,10 +13,11 @@ import {
 
 const target = { id: 'directory', label: 'Directory', url: 'https://example.test/plugin' };
 
-test('runs the external directory check after a successful Release workflow', () => {
+test('外部目录检查在本仓库登记前保持手动触发', () => {
   const workflow = readFileSync(new URL('../.github/workflows/distribution-sync.yml', import.meta.url), 'utf8');
-  assert.match(workflow, /workflow_run:\s*\n\s+workflows: \['Release'\]\s*\n\s+types: \[completed\]/);
-  assert.match(workflow, /if: github\.event_name != 'workflow_run' \|\| github\.event\.workflow_run\.conclusion == 'success'/);
+  assert.match(workflow, /^on:\r?\n\s+workflow_dispatch:/m);
+  assert.doesNotMatch(workflow, /^\s{2}(?:workflow_run|schedule|push):/m, '自动触发应保持停用，避免未登记时长期报红');
+  assert.match(workflow, /# workflow_run:/, '应保留被停用的触发器说明');
 });
 
 test('does not expose a closed PR as the awesome directory follow-up', () => {
@@ -36,9 +37,9 @@ test('parses the connector from awesome-dsh-plugin registry JSON', () => {
   assert.deepEqual(parseAwesome({
     updated: '2026-09-11',
     plugins: [{
-      name: 'dsh-mcp-connector',
-      url: 'https://github.com/duhu2000/dsh-mcp-connector',
-      npm: 'dsh-mcp-connector',
+      name: 'dsh-mcp-manager',
+      url: 'https://github.com/Guojing6/dsh-mcp-manager',
+      npm: 'dsh-mcp-manager',
       version: '0.2.41',
     }],
   }), {
@@ -50,7 +51,7 @@ test('parses the connector from awesome-dsh-plugin registry JSON', () => {
 
 test('parses dshfind install metadata', () => {
   assert.deepEqual(parseDshfind({
-    install: { pkg_name: 'dsh-mcp-connector', pkg_version: '0.2.41', npm_published: true },
+    install: { pkg_name: 'dsh-mcp-manager', pkg_version: '0.2.41', npm_published: true },
     last_synced_at: '2026-09-11T01:51:35Z',
   }), {
     observedVersion: '0.2.41',
@@ -60,7 +61,7 @@ test('parses dshfind install metadata', () => {
 });
 
 test('parses structured public directory pages', () => {
-  const html = '<script type="application/ld+json">{"identifier":"dsh-mcp-connector","codeRepository":"https://github.com/duhu2000/dsh-mcp-connector","version":"0.2.41"}</script><a href="https://www.npmjs.com/package/dsh-mcp-connector">npm</a>';
+  const html = '<script type="application/ld+json">{"identifier":"dsh-mcp-manager","codeRepository":"https://github.com/Guojing6/dsh-mcp-manager","version":"0.2.41"}</script><a href="https://www.npmjs.com/package/dsh-mcp-manager">npm</a>';
   assert.deepEqual(parseJsonLdPage(html), {
     observedVersion: '0.2.41',
     npmPublished: true,
@@ -69,7 +70,7 @@ test('parses structured public directory pages', () => {
 });
 
 test('reports a missing canonical npm link on structured public directory pages', () => {
-  const html = '<script type="application/ld+json">{"identifier":"dsh-mcp-connector","codeRepository":"https://github.com/duhu2000/dsh-mcp-connector","version":"0.2.59"}</script>';
+  const html = '<script type="application/ld+json">{"identifier":"dsh-mcp-manager","codeRepository":"https://github.com/Guojing6/dsh-mcp-manager","version":"0.2.59"}</script>';
   assert.deepEqual(parseJsonLdPage(html), {
     observedVersion: '0.2.59',
     npmPublished: false,
@@ -78,7 +79,7 @@ test('reports a missing canonical npm link on structured public directory pages'
 });
 
 test('detects stale dshbase version and false npm claim', () => {
-  const parsed = parseDshbasePage('<a href="https://github.com/duhu2000/dsh-mcp-connector/releases/tag/v0.2.37">release</a><a href="https://www.npmjs.com/package/dsh-mcp-connector">npm</a><p>not published to npm</p>');
+  const parsed = parseDshbasePage('<a href="https://github.com/Guojing6/dsh-mcp-manager/releases/tag/v0.2.37">release</a><a href="https://www.npmjs.com/package/dsh-mcp-manager">npm</a><p>not published to npm</p>');
   assert.deepEqual(parsed, {
     observedVersion: '0.2.37',
     npmPublished: false,

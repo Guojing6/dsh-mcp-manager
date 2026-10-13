@@ -40,7 +40,7 @@ export async function checkFirstUseDocs() {
   requireText(PATHS.userGuide, docs.userGuide, '(tutorials/FIRST-SUCCESS-SCENARIOS.md)');
   requireText(PATHS.userGuide, docs.userGuide, '(tutorials/TRUSTED-STATUS-COPY.md)');
   for (const expected of [
-    'dsh plugin --profile web add dsh-mcp-connector',
+    'dsh plugin --profile web add dsh-mcp-manager',
     'DSH Desktop 和 `dsh web` 都从本机 `web` profile 加载插件',
     '不要因为使用 Desktop 就把命令改成 `--profile desktop`',
     '设置 → 插件 → 插件配置 → MCP连接器',
@@ -50,7 +50,7 @@ export async function checkFirstUseDocs() {
     '权限',
     '费用',
     '无数据/待验收',
-    'https://github.com/duhu2000/dsh-mcp-connector/stargazers',
+    'https://github.com/Guojing6/dsh-mcp-manager/stargazers',
     'https://github.com/duhu2000/dsh-mcp-connector-registry/blob/main/docs/ONBOARDING.md',
     '../../CONTRIBUTING.md',
   ]) {

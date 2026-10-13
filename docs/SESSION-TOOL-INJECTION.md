@@ -48,4 +48,4 @@ Host 已观察到
 - 工具未被 Host 观察、已删除或重命名时，不能激活；已消失的激活项会在 `tools/change` 后清理，新工具不会自动继承旧激活。
 - 搜索结果来自最后成功缓存；激活只改变可见性，不代表当前业务调用必然成功。
 
-更底层的状态机、威胁模型和后续阶段见 [Issue #111 设计文档](https://github.com/duhu2000/dsh-mcp-connector/blob/main/docs/DESIGN-SESSION-DYNAMIC-TOOL-INJECTION.md)。
+更底层的状态机、威胁模型和后续阶段见 [Issue #111 设计文档](https://github.com/Guojing6/dsh-mcp-manager/blob/main/docs/DESIGN-SESSION-DYNAMIC-TOOL-INJECTION.md)。

@@ -3,7 +3,7 @@
 import { readFile } from 'node:fs/promises';
 import { pathToFileURL } from 'node:url';
 
-const PACKAGE_NAME = 'dsh-mcp-connector';
+const PACKAGE_NAME = 'dsh-mcp-manager';
 const README_PATHS = ['README.md', 'README.en.md'];
 
 export function referencedVersions(text, pattern) {
@@ -11,7 +11,7 @@ export function referencedVersions(text, pattern) {
 }
 
 export function assertCurrentReferences(path, text, version) {
-  const npmVersions = referencedVersions(text, /dsh-mcp-connector@(\d+\.\d+\.\d+)/g);
+  const npmVersions = referencedVersions(text, /dsh-mcp-manager@(\d+\.\d+\.\d+)/g);
   const releaseVersions = referencedVersions(text, /releases\/tag\/v(\d+\.\d+\.\d+)/g);
   const errors = [];
 

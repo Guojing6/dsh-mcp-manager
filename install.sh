@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
-# dsh-mcp-connector 一键安装脚本（DeepSeek Harness）
+# dsh-mcp-manager 一键安装脚本（DeepSeek Harness）
 # 用法：
 #   本地：  bash install.sh
-#   远端：  bash <(curl -fsSL https://raw.githubusercontent.com/duhu2000/dsh-mcp-connector/main/install.sh)
+#   远端：  bash <(curl -fsSL https://raw.githubusercontent.com/Guojing6/dsh-mcp-manager/main/install.sh)
 # 支持：优先 dsh CLI（自动注册 bundle）；无 dsh 时回退 pnpm 并兜底注册 bundles。
 # 幂等：重复执行不会重复注册或破坏已有配置。
 set -euo pipefail
 
-PKG="dsh-mcp-connector"
+PKG="dsh-mcp-manager"
 DSH_HOME="${DSH_HOME:-$HOME/.dsh}"
 PROFILE="${DSH_PROFILE:-web}"
 PROFILE_DIR="$DSH_HOME/profiles/$PROFILE"
@@ -61,4 +61,4 @@ fi
 echo
 echo "✅ 安装完成！最后一步：重启 DeepSeek Harness（停止后重新运行 dsh web）。"
 echo "   重启后点击左侧「MCP连接器」，或在对话中输入「列出连接器」浏览货架。"
-echo "   详见：https://github.com/duhu2000/dsh-mcp-connector"
+echo "   详见：https://github.com/Guojing6/dsh-mcp-manager"

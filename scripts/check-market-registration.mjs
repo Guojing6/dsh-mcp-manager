@@ -6,9 +6,9 @@ import { pathToFileURL } from 'node:url';
 const DEFAULTS = {
   pullRequestRepository: 'awesome-dsh-plugin/awesome-dsh-plugin',
   pullRequestNumber: 2633,
-  expectedName: 'dsh-mcp-connector',
-  expectedRepository: 'https://github.com/duhu2000/dsh-mcp-connector',
-  registrationUrl: 'https://raw.githubusercontent.com/awesome-dsh-plugin/awesome-dsh-plugin/main/data/plugins/duhu2000__dsh-mcp-connector.yml',
+  expectedName: 'dsh-mcp-manager',
+  expectedRepository: 'https://github.com/Guojing6/dsh-mcp-manager',
+  registrationUrl: 'https://raw.githubusercontent.com/awesome-dsh-plugin/awesome-dsh-plugin/main/data/plugins/Guojing6__dsh-mcp-manager.yml',
   registryUrl: 'https://awesome-dsh-plugin.com/plugins.json',
 };
 
@@ -89,7 +89,7 @@ export function assessRegistration({ pullRequest, registrationText, registry, ex
 async function fetchResponse(url, { token, json = false } = {}) {
   const headers = {
     accept: json ? 'application/vnd.github+json' : '*/*',
-    'user-agent': 'dsh-mcp-connector-market-check',
+    'user-agent': 'dsh-mcp-manager-market-check',
   };
   if (token) headers.authorization = `Bearer ${token}`;
   const response = await fetch(url, { headers, signal: AbortSignal.timeout(20_000) });

@@ -10,7 +10,7 @@ body:
     id: version
     attributes:
       label: Connector version
-      placeholder: dsh-mcp-connector@x.y.z
+      placeholder: dsh-mcp-manager@x.y.z
     validations:
       required: true
   - type: input

@@ -3,7 +3,7 @@ import { readFile, writeFile } from 'node:fs/promises';
 import { probeConnector, validateRegistryDescriptors } from '../lib/probe.js';
 
 function usage() {
-  console.log(`用法: dsh-mcp-connector-probe <catalog-or-connector.json> [选项]
+  console.log(`用法: dsh-mcp-manager-probe <catalog-or-connector.json> [选项]
 
 选项:
   --validate-only       只做 Schema、唯一性、URL 与密钥审计

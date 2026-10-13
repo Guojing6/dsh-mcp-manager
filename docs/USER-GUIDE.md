@@ -1,6 +1,6 @@
 # MCP连接器用户手册
 
-本手册面向安装和使用 `dsh-mcp-connector` 的 DeepSeek Harness（DSH）用户。服务商或 MCP 原作者如需提交市场卡片，请改看独立 Registry 的[第三方连接器上架指南](https://github.com/duhu2000/dsh-mcp-connector-registry/blob/main/docs/ONBOARDING.md)。
+本手册面向安装和使用 `dsh-mcp-manager` 的 DeepSeek Harness（DSH）用户。服务商或 MCP 原作者如需提交市场卡片，请改看独立 Registry 的[第三方连接器上架指南](https://github.com/duhu2000/dsh-mcp-connector-registry/blob/main/docs/ONBOARDING.md)。
 
 ## 按任务开始
 
@@ -18,13 +18,13 @@
 要求：DSH Desktop 或 `web` profile，Node.js 20 或更高版本。
 
 ```bash
-dsh plugin --profile web add dsh-mcp-connector
+dsh plugin --profile web add dsh-mcp-manager
 ```
 
 也可以运行一键安装脚本：
 
 ```bash
-bash <(curl -fsSL https://raw.githubusercontent.com/duhu2000/dsh-mcp-connector/main/install.sh)
+bash <(curl -fsSL https://raw.githubusercontent.com/Guojing6/dsh-mcp-manager/main/install.sh)
 ```
 
 重复执行同一安装命令即可升级。安装或升级后必须让 DSH **完全退出并重新启动**，仅刷新浏览器页面不足以替换已经加载的插件代码。
@@ -399,4 +399,4 @@ Windows 下 `.cmd` / `.bat` 是脚本包装器，不等同于可直接启动的 
 
 ### 如何反馈问题
 
-提交 [GitHub Issue](https://github.com/duhu2000/dsh-mcp-connector/issues) 时，请提供 DSH 版本、插件版本、连接器名称、复现步骤和已脱敏的错误信息。不要附带 Token、API Key、Cookie、授权码或包含真实凭据的配置文件。
+提交 [GitHub Issue](https://github.com/Guojing6/dsh-mcp-manager/issues) 时，请提供 DSH 版本、插件版本、连接器名称、复现步骤和已脱敏的错误信息。不要附带 Token、API Key、Cookie、授权码或包含真实凭据的配置文件。

@@ -23,16 +23,16 @@ Bearer/API Key 型连接器可在卡片上点「配置」，一次填写凭据�
 1. Fork 公开仓库 [`duhu2000/dsh-mcp-connector-registry`](https://github.com/duhu2000/dsh-mcp-connector-registry)，在 `connectors/<id>.json` 新增一个描述文件，一个连接器一个文件。
 2. 运行 `npm install --legacy-peer-deps` 和 `npm run check`。
 3. 提交 PR。CI 会检查 Schema、重复 id/serverName、密钥、URL、MCP initialize、OAuth 元数据和图标。
-4. 合并后 CI 重建根目录 `catalog.json`；客户端点击“刷新”后可见，无需重新发布 `dsh-mcp-connector` npm 包。
+4. 合并后 CI 重建根目录 `catalog.json`；客户端点击“刷新”后可见，无需重新发布 `dsh-mcp-manager` npm 包。
 
 插件默认通过 `https://cdn.jsdelivr.net/gh/duhu2000/dsh-mcp-connector-registry@main/catalog.json` 读取目录；主源失败时依次尝试 GitHub raw 备用源、上次缓存和随包内置目录。jsDelivr 的分支 URL 存在缓存延迟，合并后的新卡片可能不会秒级出现。
 
 ## 4. DSH 外部插件市场验收
 
-`dsh-mcp-connector` 在 `awesome-dsh-plugin` 的注册 PR 为 [#2633](https://github.com/awesome-dsh-plugin/awesome-dsh-plugin/pull/2633)。仓库每小时自动执行 `.github/workflows/market-registration.yml`：
+`dsh-mcp-manager` 在 `awesome-dsh-plugin` 的注册 PR 为 [#2633](https://github.com/awesome-dsh-plugin/awesome-dsh-plugin/pull/2633)。仓库每小时自动执行 `.github/workflows/market-registration.yml`：
 
 1. PR 未合并时记录为 `awaiting-merge`，不误报构建失败；
-2. PR 合并后检查上游 `data/plugins/duhu2000__dsh-mcp-connector.yml` 已进入 `main`；
+2. PR 合并后检查上游 `data/plugins/Guojing6__dsh-mcp-manager.yml` 已进入 `main`；
 3. 继续检查 DSH Market 实际使用的 `https://awesome-dsh-plugin.com/plugins.json`；
 4. YAML 与线上目录均生效后状态为 `accepted`，否则在合并后明确报告目录同步未完成。
 

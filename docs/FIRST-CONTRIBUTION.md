@@ -1,8 +1,8 @@
 # 首次贡献 / First contribution
 
-欢迎第一次参与 `dsh-mcp-connector`。优先选择带有 [`good first issue`](https://github.com/duhu2000/dsh-mcp-connector/labels/good%20first%20issue) 标签、且尚未被认领的任务；在 Issue 留言后再开始，避免重复劳动。
+欢迎第一次参与 `dsh-mcp-manager`。优先选择带有 [`good first issue`](https://github.com/Guojing6/dsh-mcp-manager/labels/good%20first%20issue) 标签、且尚未被认领的任务；在 Issue 留言后再开始，避免重复劳动。
 
-Welcome! Start with an unassigned [`good first issue`](https://github.com/duhu2000/dsh-mcp-connector/labels/good%20first%20issue). Leave a short comment before working on it so contributors do not duplicate effort.
+Welcome! Start with an unassigned [`good first issue`](https://github.com/Guojing6/dsh-mcp-manager/labels/good%20first%20issue). Leave a short comment before working on it so contributors do not duplicate effort.
 
 ## 适合第一次参与的范围
 

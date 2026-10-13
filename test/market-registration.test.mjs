@@ -8,13 +8,15 @@ import {
 } from '../scripts/check-market-registration.mjs';
 
 const expected = {
-  expectedName: 'dsh-mcp-connector',
-  expectedRepository: 'https://github.com/duhu2000/dsh-mcp-connector',
+  expectedName: 'dsh-mcp-manager',
+  expectedRepository: 'https://github.com/Guojing6/dsh-mcp-manager',
 };
+// normalizeRepository 统一小写以做大小写不敏感比较（owner 现在是混合大小写的 Guojing6）
+const normalizedRepository = 'https://github.com/guojing6/dsh-mcp-manager';
 
 test('规范化 GitHub 仓库地址', () => {
-  assert.equal(normalizeRepository('git+https://github.com/duhu2000/dsh-mcp-connector.git'), expected.expectedRepository);
-  assert.equal(normalizeRepository('https://github.com/duhu2000/dsh-mcp-connector/'), expected.expectedRepository);
+  assert.equal(normalizeRepository('git+https://github.com/Guojing6/dsh-mcp-manager.git'), normalizedRepository);
+  assert.equal(normalizeRepository('https://github.com/Guojing6/dsh-mcp-manager/'), normalizedRepository);
 });
 
 test('兼容官网 plugins.json 与 DSH Market 包装格式', () => {

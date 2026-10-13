@@ -66,12 +66,12 @@ jobs:
           p.version = [major, minor, patch + 1].join(".") + "-pr." + process.env.PR_NUMBER + "." + process.env.GITHUB_RUN_NUMBER;
           fs.writeFileSync("package.json", JSON.stringify(p, null, 2) + "\n");'
       - run: npm pack --ignore-scripts
-      - run: shasum -a 256 dsh-mcp-connector-*.tgz > SHA256SUMS.txt
+      - run: shasum -a 256 dsh-mcp-manager-*.tgz > SHA256SUMS.txt
       - uses: actions/upload-artifact@v7
         with:
-          name: dsh-mcp-connector-pr-${{ github.event.pull_request.number }}-${{ github.event.pull_request.head.sha }}
+          name: dsh-mcp-manager-pr-${{ github.event.pull_request.number }}-${{ github.event.pull_request.head.sha }}
           path: |
-            dsh-mcp-connector-*.tgz
+            dsh-mcp-manager-*.tgz
             SHA256SUMS.txt
           if-no-files-found: error
           retention-days: 7

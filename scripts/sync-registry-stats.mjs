@@ -97,7 +97,7 @@ async function fetchStats(url, { fetchImpl = fetch, attempts = 3, timeoutMs = 15
     const timer = setTimeout(() => controller.abort(new Error('request timeout')), timeoutMs);
     try {
       const response = await fetchImpl(endpoint, {
-        headers: { Accept: 'application/json', 'User-Agent': 'dsh-mcp-connector-stats-sync' },
+        headers: { Accept: 'application/json', 'User-Agent': 'dsh-mcp-manager-stats-sync' },
         signal: controller.signal,
       });
       if (!response.ok) throw new Error(`HTTP ${response.status}`);

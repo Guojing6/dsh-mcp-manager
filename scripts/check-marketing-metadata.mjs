@@ -26,7 +26,7 @@ function yamlSingleQuoted(value) {
 function githubHeaders() {
   const headers = {
     accept: 'application/vnd.github+json',
-    'user-agent': 'dsh-mcp-connector-marketing-check',
+    'user-agent': 'dsh-mcp-manager-marketing-check',
     'x-github-api-version': '2022-11-28',
   };
   if (process.env.GITHUB_TOKEN) headers.authorization = `Bearer ${process.env.GITHUB_TOKEN}`;
@@ -45,7 +45,7 @@ export async function checkMarketingMetadata({ live = false, liveGithub = live, 
     readJson('package.json'),
     readText('README.md'),
     readText('README.en.md'),
-    readText('duhu2000__dsh-mcp-connector.yml'),
+    readText('Guojing6__dsh-mcp-manager.yml'),
     readText('CONTRIBUTING.md'),
     readText('ui/index.html'),
   ]);

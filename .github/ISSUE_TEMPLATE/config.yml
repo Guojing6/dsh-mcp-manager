@@ -4,5 +4,5 @@ contact_links:
     url: https://github.com/duhu2000/dsh-mcp-connector-registry/blob/main/docs/ONBOARDING.md
     about: Connector descriptors are reviewed in the independent Registry repository.
   - name: First contribution / 首次贡献
-    url: https://github.com/duhu2000/dsh-mcp-connector/blob/main/docs/FIRST-CONTRIBUTION.md
+    url: https://github.com/Guojing6/dsh-mcp-manager/blob/main/docs/FIRST-CONTRIBUTION.md
     about: Start with a scoped good first issue and the contributor checklist.

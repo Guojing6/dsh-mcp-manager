@@ -97,8 +97,8 @@ if (sensitive.length > 0) {
 }
 
 const installScript = readFileSync('install.sh', 'utf8');
-if (!/^PKG="dsh-mcp-connector"$/m.test(installScript)) {
-  console.error('verify-pack 失败：install.sh 未安装 dsh-mcp-connector');
+if (!/^PKG="dsh-mcp-manager"$/m.test(installScript)) {
+  console.error('verify-pack 失败：install.sh 未安装 dsh-mcp-manager');
   process.exit(1);
 }
 

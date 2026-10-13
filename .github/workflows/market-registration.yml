@@ -2,14 +2,16 @@ name: DSH marketplace acceptance
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: '23 * * * *'
-  push:
-    branches: [main]
-    paths:
-      - '.github/workflows/market-registration.yml'
-      - 'scripts/check-market-registration.mjs'
-      - 'test/market-registration.test.mjs'
+  # 该检查面向上游项目在 awesome-dsh-plugin / DSH 市场中的收录状态；本仓库（Guojing6/dsh-mcp-manager）
+  # 尚未登记，定时与 push 触发会长期报红，故只保留手动触发。
+  # schedule:
+  #   - cron: '23 * * * *'
+  # push:
+  #   branches: [main]
+  #   paths:
+  #     - '.github/workflows/market-registration.yml'
+  #     - 'scripts/check-market-registration.mjs'
+  #     - 'test/market-registration.test.mjs'
 
 permissions:
   contents: read

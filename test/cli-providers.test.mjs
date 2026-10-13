@@ -18,12 +18,12 @@ import {
 
 test('仅升级精确匹配的旧市场桥接，不覆盖用户自定义命令', () => {
   const record = { connectorId: 'dingtalk', command: 'npx', args: [
-    '--yes', '--legacy-peer-deps', '--package', 'dsh-mcp-connector@0.2.48',
+    '--yes', '--legacy-peer-deps', '--package', 'dsh-mcp-manager@0.2.48',
     '--package', 'dingtalk-workspace-cli@1.0.61', 'dsh-mcp-cli-bridge', '--provider', 'dingtalk-dws',
   ] };
-  assert.ok(cliBridgeArgs(record).includes('dsh-mcp-connector@0.2.55'));
-  assert.ok(cliBridgeArgs({ ...record, args: record.args.map((arg) => arg.replace('@0.2.48', '@0.2.49')) }).includes('dsh-mcp-connector@0.2.55'));
-  assert.ok(record.args.includes('dsh-mcp-connector@0.2.48'));
+  assert.ok(cliBridgeArgs(record).includes('dsh-mcp-manager@0.2.55'));
+  assert.ok(cliBridgeArgs({ ...record, args: record.args.map((arg) => arg.replace('@0.2.48', '@0.2.49')) }).includes('dsh-mcp-manager@0.2.55'));
+  assert.ok(record.args.includes('dsh-mcp-manager@0.2.48'));
   for (const changed of [{ connectorId: 'custom' }, { command: '/custom/npx' }, { args: [...record.args, '--custom'] }]) {
     const custom = { ...record, ...changed };
     assert.deepEqual(cliBridgeArgs(custom), custom.args);

@@ -30,7 +30,7 @@ test('npm latest 决定可升级版本，GitHub Release 提供补充信息', asy
       if (url === GITHUB_LATEST_RELEASE_URL) {
         return jsonResponse({
           tag_name: 'v0.2.24',
-          html_url: 'https://github.com/duhu2000/dsh-mcp-connector/releases/tag/v0.2.24',
+          html_url: 'https://github.com/Guojing6/dsh-mcp-manager/releases/tag/v0.2.24',
           published_at: '2026-08-26T00:00:00Z',
         });
       }

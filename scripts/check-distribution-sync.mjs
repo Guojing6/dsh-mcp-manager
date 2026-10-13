@@ -3,8 +3,8 @@
 import { appendFileSync, writeFileSync } from 'node:fs';
 import { pathToFileURL } from 'node:url';
 
-const PACKAGE_NAME = 'dsh-mcp-connector';
-const REPOSITORY_URL = 'https://github.com/duhu2000/dsh-mcp-connector';
+const PACKAGE_NAME = 'dsh-mcp-manager';
+const REPOSITORY_URL = 'https://github.com/Guojing6/dsh-mcp-manager';
 
 export const DEFAULT_TARGETS = [
   {
@@ -16,26 +16,26 @@ export const DEFAULT_TARGETS = [
   {
     id: 'dshfind',
     label: 'dshfind',
-    url: 'https://api.dshfind.com/v1/plugins/duhu2000/dsh-mcp-connector',
+    url: 'https://api.dshfind.com/v1/plugins/Guojing6/dsh-mcp-manager',
     parser: 'dshfind',
   },
   {
     id: 'dsh-directory',
     label: 'DSH Directory',
-    url: 'https://dsh.directory/plugins/duhu2000/dsh-mcp-connector',
+    url: 'https://dsh.directory/plugins/Guojing6/dsh-mcp-manager',
     parser: 'json-ld',
   },
   {
     id: 'dsh-pub',
     label: 'dsh.pub',
-    url: 'https://dsh.pub/en/plugins/dsh-mcp-connector/',
+    url: 'https://dsh.pub/en/plugins/dsh-mcp-manager/',
     parser: 'json-ld',
     trackingUrl: 'https://github.com/dsh-pub/dsh-pub/issues/117',
   },
   {
     id: 'dshbase',
     label: 'dshbase',
-    url: 'https://www.dshbase.com/plugins/dsh-mcp-connector/',
+    url: 'https://www.dshbase.com/plugins/dsh-mcp-manager/',
     parser: 'dshbase',
     trackingUrl: 'https://github.com/ylwl1997/dshbase/issues/100',
   },
@@ -80,7 +80,8 @@ export function parseDshfind(payload) {
 
 export function parseJsonLdPage(text) {
   const html = String(text ?? '');
-  const repositoryMarker = 'duhu2000/dsh-mcp-connector';
+  // 从仓库地址推导并统一小写：owner 现在含大写字母（Guojing6），不能直接与 html.toLowerCase() 比较。
+  const repositoryMarker = REPOSITORY_URL.replace(/^https?:\/\//i, '').toLowerCase();
   if (!html.toLowerCase().includes(repositoryMarker)) {
     return { observedVersion: null, detail: 'connector identity is missing from the page' };
   }
@@ -98,7 +99,7 @@ export function parseJsonLdPage(text) {
 
 export function parseDshbasePage(text) {
   const html = String(text ?? '');
-  const releaseVersion = html.match(/dsh-mcp-connector\/releases\/tag\/v([^"'<\s]+)/i)?.[1];
+  const releaseVersion = html.match(/dsh-mcp-manager\/releases\/tag\/v([^"'<\s]+)/i)?.[1];
   const deniesNpm = /not published to npm/i.test(html);
   return {
     observedVersion: normalizeVersion(releaseVersion),
@@ -159,7 +160,7 @@ function parseTarget(target, body) {
 
 async function fetchText(fetchImpl, url) {
   const response = await fetchImpl(url, {
-    headers: { accept: '*/*', 'user-agent': 'dsh-mcp-connector-distribution-check' },
+    headers: { accept: '*/*', 'user-agent': 'dsh-mcp-manager-distribution-check' },
     signal: AbortSignal.timeout(30_000),
   });
   if (!response.ok) throw new Error(`HTTP ${response.status}`);

@@ -1,5 +1,5 @@
 {
-  "name": "dsh-mcp-connector",
+  "name": "dsh-mcp-manager",
   "version": "0.2.70",
   "description": "DeepSeek Harness MCP Connector: connect servers, search tools across active connections, and troubleshoot discovery. Includes a continuously updated catalog; supports OAuth 2.0 PKCE, API keys, Streamable HTTP/stdio, and mcpServers JSON import.",
   "type": "module",
@@ -10,7 +10,7 @@
     "./package.json": "./package.json"
   },
   "bin": {
-    "dsh-mcp-connector-probe": "scripts/probe-connector.mjs",
+    "dsh-mcp-manager-probe": "scripts/probe-connector.mjs",
     "dsh-mcp-cli-bridge": "scripts/cli-bridge.mjs"
   },
   "files": [
@@ -122,11 +122,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/duhu2000/dsh-mcp-connector.git"
+    "url": "git+https://github.com/Guojing6/dsh-mcp-manager.git"
   },
-  "homepage": "https://github.com/duhu2000/dsh-mcp-connector#readme",
+  "homepage": "https://github.com/Guojing6/dsh-mcp-manager#readme",
   "bugs": {
-    "url": "https://github.com/duhu2000/dsh-mcp-connector/issues"
+    "url": "https://github.com/Guojing6/dsh-mcp-manager/issues"
   },
   "dsh": {
     "bundle": {

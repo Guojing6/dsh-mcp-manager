@@ -942,7 +942,7 @@ test('DSH Desktop 设置中没有插件市场时回退到 npm 更新说明', asy
   assert.equal(closes, 1);
   assert.equal(settingsClicks, 1);
   assert.deepEqual(opened, [[
-    'https://www.npmjs.com/package/dsh-mcp-connector', '_blank', 'noopener,noreferrer',
+    'https://www.npmjs.com/package/dsh-mcp-manager', '_blank', 'noopener,noreferrer',
   ]]);
 });
 
@@ -1141,7 +1141,7 @@ test('能力探测通过后渲染一键更新，并使用 Provider 广告的同�
       return new Response(JSON.stringify({
         schema: 'dsh-market/update-api/v1',
         package: {
-          name: 'dsh-mcp-connector',
+          name: 'dsh-mcp-manager',
           installedVersion: '0.2.24',
           latestVersion: '0.2.25',
           updateAvailable: true,
@@ -1218,7 +1218,7 @@ test('能力探测通过后渲染一键更新，并使用 Provider 广告的同�
   assert.ok(descendants(tree).some((node) => node.props?.children === '正在更新 25%'));
 	const mutation = requests.find(([url, method]) => url === '/test-update-provider/v1/updates' && method === 'POST');
   assert.ok(mutation, '点击后应调用 Provider 广告的更新入口');
-  assert.deepEqual(JSON.parse(mutation[2]), { packageName: 'dsh-mcp-connector' });
+  assert.deepEqual(JSON.parse(mutation[2]), { packageName: 'dsh-mcp-manager' });
 });
 
 test('Provider 广告跨源端点时拒绝一键更新并安全降级', async () => {
@@ -1317,7 +1317,7 @@ test('Provider 广告跨源端点时拒绝一键更新并安全降级', async ()
 
   effects.length = 0;
   let tree = render();
-  const command = 'dsh plugin --profile web add --config.minimumReleaseAge=0 dsh-mcp-connector@0.2.25';
+  const command = 'dsh plugin --profile web add --config.minimumReleaseAge=0 dsh-mcp-manager@0.2.25';
   assert.ok(descendants(tree).some((node) => node.type === 'code'
     && node.props?.children === command));
   const copyButton = descendants(tree).find((node) => node.type === 'button'

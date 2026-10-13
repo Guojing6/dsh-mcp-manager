@@ -1130,7 +1130,7 @@
 
   function communityCtaHtml() {
     if (!communityCtaEligible || communityCtaDismissed) return '';
-    return `<aside class="community-cta" aria-label="MCP连接器社区入口"><span class="copy">连接顺利？如果 MCP连接器对你有帮助，欢迎支持或一起改进。</span><a href="https://github.com/duhu2000/dsh-mcp-connector/stargazers" target="_blank" rel="noopener noreferrer">Star</a><a href="https://github.com/duhu2000/dsh-mcp-connector-registry/blob/main/docs/ONBOARDING.md" target="_blank" rel="noopener noreferrer">提交连接器</a><a href="https://github.com/duhu2000/dsh-mcp-connector/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener noreferrer">参与贡献</a><button class="community-cta-close" type="button" onclick="window.__mcp.dismissCommunityCta()" aria-label="关闭社区入口" title="本次不再显示">×</button></aside>`;
+    return `<aside class="community-cta" aria-label="MCP连接器社区入口"><span class="copy">连接顺利？如果 MCP连接器对你有帮助，欢迎支持或一起改进。</span><a href="https://github.com/Guojing6/dsh-mcp-manager/stargazers" target="_blank" rel="noopener noreferrer">Star</a><a href="https://github.com/duhu2000/dsh-mcp-connector-registry/blob/main/docs/ONBOARDING.md" target="_blank" rel="noopener noreferrer">提交连接器</a><a href="https://github.com/Guojing6/dsh-mcp-manager/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener noreferrer">参与贡献</a><button class="community-cta-close" type="button" onclick="window.__mcp.dismissCommunityCta()" aria-label="关闭社区入口" title="本次不再显示">×</button></aside>`;
   }
 
   function markCommunityCtaEligible() {
@@ -1536,7 +1536,7 @@
     if (mode === 'url') {
       openModal('添加 MCP 连接', `${addTabs(mode)}
         <p class="field-help">粘贴厂商提供的 ConnectorDescriptor JSON 地址。安装成功后会作为卡片显示在本机「市场」。</p>
-        <div class="form-note"><strong>公共市场如何上架</strong>向 <code>dsh-mcp-connector</code> registry 提交无 Token/API Key 的描述 JSON；Schema、URL、MCP 和 OAuth 探针通过后才会分发给所有用户。真正一键 OAuth 需厂商支持 Authorization Code + PKCE、标准元数据和动态客户端注册。</div>
+        <div class="form-note"><strong>公共市场如何上架</strong>向 <code>dsh-mcp-manager</code> registry 提交无 Token/API Key 的描述 JSON；Schema、URL、MCP 和 OAuth 探针通过后才会分发给所有用户。真正一键 OAuth 需厂商支持 Authorization Code + PKCE、标准元数据和动态客户端注册。</div>
         <label for="descriptor-url">连接器描述 URL（必填）</label>
         <input id="descriptor-url" type="url" placeholder="https://example.com/dsh-connector.json" />
         ${scopeFieldHtml()}

@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://github.com/duhu2000/dsh-mcp-connector/registry/schema/connector.schema.json",
+  "$id": "https://github.com/Guojing6/dsh-mcp-manager/registry/schema/connector.schema.json",
   "title": "DSH MCP Connector Descriptor",
   "type": "object",
   "additionalProperties": false,

@@ -2,7 +2,7 @@
 
 > 状态：**design blocked**  
 > 复核日期：2026-09-03  
-> 适用于：`dsh-mcp-connector` 详情页的交互式工具试运行，不影响模型在 DSH Agent turn 内的正常 MCP 工具调用。
+> 适用于：`dsh-mcp-manager` 详情页的交互式工具试运行，不影响模型在 DSH Agent turn 内的正常 MCP 工具调用。
 
 本文只使用 DeepSeek Harness（DSH）官方公开的 ToolRuntime、审批、超时、Session 和 MCP Client 契约。当前结论是：DSH 已提供正式的工具执行管线，但仍缺少“从连接器详情页发起、又能进入现有 Agent turn 审批/审计链”的公开编排入口；同时官方 MCP bridge 没有把 MCP Tool annotations 传递给 ToolRuntime。在两个缺口补齐前，不实现直接试运行按钮。
 

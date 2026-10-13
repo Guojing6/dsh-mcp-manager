@@ -19,7 +19,7 @@ DSH Market 适配器从 `GET /dsh-market/api/v1/capabilities` 开始，要求 `s
 ## 更新流程
 
 1. 插件自己的服务端缓存检查 npm `latest` 与 GitHub Release，只在 npm 已有可安装新版本时提示升级。
-2. 选中的 Provider 再检查本 profile 中 `dsh-mcp-connector` 的实际安装版本和目标版本。
+2. 选中的 Provider 再检查本 profile 中 `dsh-mcp-manager` 的实际安装版本和目标版本。
 3. 用户点击“一键更新”后，Provider 立即返回 `operationId`；页面通过适配器轮询任务状态，展示排队、解析、下载和安装进度。
 4. Provider 报告成功后，页面仍会独立校验 `beforeVersion`、点击时的预期版本与 `installedVersion`。降级、目标不一致或无效结果会被拒绝；Provider 保留恢复点时自动回滚，不向用户展示重启。
 5. 完整性校验通过后，按 Provider 返回的激活结论展示“刷新生效”或重启提示。Web 且 Provider 明确允许进程重启时才展示“立即重启”；Desktop 等由外壳管理生命周期的宿主只提示用户重启，不自行杀进程。
@@ -29,7 +29,7 @@ Provider 读取的是 profile 中已经落盘的插件版本，标题版本来�
 
 失败结果使用稳定代码区分正在运行的 Agent、其他安装任务占用、发布安全等待、镜像同步、版本未变化、超时和权限拒绝，以及 `DOWNGRADE_DETECTED`、`RESOLVED_VERSION_MISMATCH`、`INVALID_UPDATE_RESULT` 三类完整性故障。`RELEASE_TOO_FRESH` 明确显示为约 24 小时的发布安全等待期，并提供“立即更新（跳过等待）”；真正的镜像同步故障保留独立提示，不再混用同一文案。
 
-当 DSH Desktop 或其他宿主没有兼容 Update Provider 时，标题区直接展示绑定 npm 精确版本的 CLI 命令，例如 `dsh plugin --profile web add --config.minimumReleaseAge=0 dsh-mcp-connector@<目标版本>`，并提供复制按钮与 npm 页面入口。运行时会把 `<目标版本>` 替换为 npm 已发布的确切版本；命令中的单次覆盖只用于用户主动跳过本次发布安全等待。Connector 仍不自行执行包管理器命令。
+当 DSH Desktop 或其他宿主没有兼容 Update Provider 时，标题区直接展示绑定 npm 精确版本的 CLI 命令，例如 `dsh plugin --profile web add --config.minimumReleaseAge=0 dsh-mcp-manager@<目标版本>`，并提供复制按钮与 npm 页面入口。运行时会把 `<目标版本>` 替换为 npm 已发布的确切版本；命令中的单次覆盖只用于用户主动跳过本次发布安全等待。Connector 仍不自行执行包管理器命令。
 
 ## 安全边界
 

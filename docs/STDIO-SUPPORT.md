@@ -19,7 +19,7 @@
 
 ### 1.1 实施前的现状缺口（历史记录）
 
-以下内容记录实施前的缺口；当前版本已经支持 stdio。实施前 `dsh-mcp-connector` 的传输方式（`transport`）仅支持：
+以下内容记录实施前的缺口；当前版本已经支持 stdio。实施前 `dsh-mcp-manager` 的传输方式（`transport`）仅支持：
 
 - `streamable-http`
 - `sse`

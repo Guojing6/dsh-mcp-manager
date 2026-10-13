@@ -9,7 +9,7 @@
 当前默认安装布局中，DSH Desktop 和 `dsh web` 都从本机 `web` profile 加载插件，因此两种宿主都使用同一条安装命令；不要因为使用 Desktop 就把命令改成 `--profile desktop`。
 
 ```bash
-dsh plugin --profile web add dsh-mcp-connector
+dsh plugin --profile web add dsh-mcp-manager
 ```
 
 安装或升级后，只重启你正在使用的宿主：DSH Desktop 需完全退出应用后重新打开；`dsh web` 需停止原进程后重新启动。打开左侧“连接器”；若侧边栏入口已隐藏，从“设置 → 插件 → 插件配置 → MCP连接器”点击“打开 MCP连接器”。自定义过 profile 布局的部署应以其宿主配置为准。
@@ -50,4 +50,4 @@ dsh plugin --profile web add dsh-mcp-connector
 
 只有第三项通过，才能把这个具体场景记为“首次成功调用”。若第三项没有条件验证，请明确写“无数据/待验收”，不要从下载量、页面浏览、连接成功或演示素材推算。
 
-如果这条路径确实帮你完成首次调用，欢迎克制地 [Star 项目](https://github.com/duhu2000/dsh-mcp-connector/stargazers)、[提交新连接器](https://github.com/duhu2000/dsh-mcp-connector-registry/blob/main/docs/ONBOARDING.md)或[参与贡献](../../CONTRIBUTING.md)。
+如果这条路径确实帮你完成首次调用，欢迎克制地 [Star 项目](https://github.com/Guojing6/dsh-mcp-manager/stargazers)、[提交新连接器](https://github.com/duhu2000/dsh-mcp-connector-registry/blob/main/docs/ONBOARDING.md)或[参与贡献](../../CONTRIBUTING.md)。

@@ -24,6 +24,10 @@ jobs:
         run: node -e "const p=require('./package.json');if(process.env.GITHUB_REF_NAME!=='v'+p.version)throw new Error('tag '+process.env.GITHUB_REF_NAME+' != v'+p.version)"
       - run: npm run check
       - name: Publish to npm with Trusted Publishing
+        # 分发标识改为 dsh-mcp-manager 后，需要先在 npmjs.com 为该包绑定 Trusted Publisher
+        # （Guojing6/dsh-mcp-manager + release.yml），再把仓库变量 NPM_PUBLISH_ENABLED 设为 true。
+        # 未配置前跳过发布，避免 tag 触发必然失败的 publish。
+        if: vars.NPM_PUBLISH_ENABLED == 'true'
         run: npm publish --access public
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2

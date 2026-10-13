@@ -2,17 +2,18 @@ name: External directory sync
 
 on:
   workflow_dispatch:
-  workflow_run:
-    workflows: ['Release']
-    types: [completed]
-  schedule:
-    - cron: '17 3 * * *'
-  push:
-    branches: [main]
-    paths:
-      - '.github/workflows/distribution-sync.yml'
-      - 'scripts/check-distribution-sync.mjs'
-      - 'test/distribution-sync.test.mjs'
+  # 该检查面向上游项目在外部目录/市场中的收录状态；本仓库尚未登记，自动触发会长期报红，故只保留手动触发。
+  # workflow_run:
+  #   workflows: ['Release']
+  #   types: [completed]
+  # schedule:
+  #   - cron: '17 3 * * *'
+  # push:
+  #   branches: [main]
+  #   paths:
+  #     - '.github/workflows/distribution-sync.yml'
+  #     - 'scripts/check-distribution-sync.mjs'
+  #     - 'test/distribution-sync.test.mjs'
 
 permissions:
   contents: read

@@ -2,8 +2,10 @@ name: Sync Registry product stats
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: '12 * * * *'
+  # 定时同步暂时停用：独立 Registry 仓库的 catalog-stats.json 仍按「随包 4 张唯一卡片」计算，
+  # 自动回写会把旧口径写进 README。等该仓库把 bundledUniqueConnectorIds 置空后再恢复下面的 cron。
+  # schedule:
+  #   - cron: '12 * * * *'
 
 permissions:
   contents: write

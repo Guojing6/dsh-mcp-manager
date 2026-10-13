@@ -18,14 +18,14 @@ Results identify their source and last successful cache time. A cached tool is n
 
 Tool browsing does not execute target tools. Parameter summaries may omit complex rules; the original-schema view contains the sanitized, size-limited cached schema, not an untouched server response. See the [Chinese tool-workspace guide](docs/USER-GUIDE.md#51-工具工作台统一查找工具).
 
-[Chinese user guide](docs/USER-GUIDE.md) · [Connector onboarding](https://github.com/duhu2000/dsh-mcp-connector-registry/blob/main/docs/ONBOARDING.md) · [First contribution](docs/FIRST-CONTRIBUTION.md) · [Contributing](CONTRIBUTING.md) · [Issues](https://github.com/duhu2000/dsh-mcp-connector/issues)
+[Chinese user guide](docs/USER-GUIDE.md) · [Connector onboarding](https://github.com/duhu2000/dsh-mcp-connector-registry/blob/main/docs/ONBOARDING.md) · [First contribution](docs/FIRST-CONTRIBUTION.md) · [Contributing](CONTRIBUTING.md) · [Issues](https://github.com/Guojing6/dsh-mcp-manager/issues)
 
-[![CI](https://github.com/duhu2000/dsh-mcp-connector/actions/workflows/ci.yml/badge.svg)](https://github.com/duhu2000/dsh-mcp-connector/actions/workflows/ci.yml)
-[![npm](https://img.shields.io/npm/v/dsh-mcp-connector.svg)](https://www.npmjs.com/package/dsh-mcp-connector)
-[![npm downloads](https://img.shields.io/npm/dm/dsh-mcp-connector.svg)](https://www.npmjs.com/package/dsh-mcp-connector)
-[![GitHub stars](https://img.shields.io/github/stars/duhu2000/dsh-mcp-connector?style=flat)](https://github.com/duhu2000/dsh-mcp-connector/stargazers)
-[![GitHub forks](https://img.shields.io/github/forks/duhu2000/dsh-mcp-connector?style=flat)](https://github.com/duhu2000/dsh-mcp-connector/forks)
-[![GitHub Release](https://img.shields.io/github/v/release/duhu2000/dsh-mcp-connector)](https://github.com/duhu2000/dsh-mcp-connector/releases/latest)
+[![CI](https://github.com/Guojing6/dsh-mcp-manager/actions/workflows/ci.yml/badge.svg)](https://github.com/Guojing6/dsh-mcp-manager/actions/workflows/ci.yml)
+[![npm](https://img.shields.io/npm/v/dsh-mcp-manager.svg)](https://www.npmjs.com/package/dsh-mcp-manager)
+[![npm downloads](https://img.shields.io/npm/dm/dsh-mcp-manager.svg)](https://www.npmjs.com/package/dsh-mcp-manager)
+[![GitHub stars](https://img.shields.io/github/stars/Guojing6/dsh-mcp-manager?style=flat)](https://github.com/Guojing6/dsh-mcp-manager/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/Guojing6/dsh-mcp-manager?style=flat)](https://github.com/Guojing6/dsh-mcp-manager/forks)
+[![GitHub Release](https://img.shields.io/github/v/release/Guojing6/dsh-mcp-manager)](https://github.com/Guojing6/dsh-mcp-manager/releases/latest)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Registry connectors](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fduhu2000%2Fdsh-mcp-connector-registry%2Fmain%2Fcatalog-stats.json&query=%24.registryCount&label=Registry%20connectors&color=5865f2)](https://github.com/duhu2000/dsh-mcp-connector-registry/blob/main/catalog-stats.json)
 [![Marketplace cards](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fduhu2000%2Fdsh-mcp-connector-registry%2Fmain%2Fcatalog-stats.json&query=%24.marketCount&label=Marketplace%20cards&color=16a34a)](https://github.com/duhu2000/dsh-mcp-connector-registry/blob/main/catalog-stats.json)
@@ -33,7 +33,7 @@ Tool browsing does not execute target tools. Parameter summaries may omit comple
 ## Start in 30 seconds
 
 ```bash
-dsh plugin --profile web add dsh-mcp-connector
+dsh plugin --profile web add dsh-mcp-manager
 ```
 
 Fully restart DeepSeek Harness Desktop or `dsh web` after installation or upgrade, then open **Connectors** in the primary sidebar, or open it directly from **Settings → Plugins → Plugin Configuration → MCP Connector**.
@@ -42,9 +42,9 @@ For a first successful use, confirm the connection and scope in Installed, find 
 
 First-success guide (Chinese): [install → connect → find a tool → make the first read-only call](docs/tutorials/README.md). Task details: [three acceptance-ready scenarios](docs/tutorials/FIRST-SUCCESS-SCENARIOS.md) · [migrate `mcpServers` JSON](docs/tutorials/JSON-MIGRATION.md) · [diagnose OAuth](docs/tutorials/OAUTH-DIAGNOSTICS.md) · [find and recover tools](docs/tutorials/TOOL-SEARCH-RECOVERY.md) · [trusted status copy](docs/tutorials/TRUSTED-STATUS-COPY.md).
 
-![43-second MCP Connector walkthrough](https://raw.githubusercontent.com/duhu2000/dsh-mcp-connector/main/docs/demo.gif)
+![43-second MCP Connector walkthrough](https://raw.githubusercontent.com/Guojing6/dsh-mcp-manager/main/docs/demo.gif)
 
-If the plugin helps you connect an MCP server faster, consider [starring the repository](https://github.com/duhu2000/dsh-mcp-connector/stargazers), [submitting a connector](https://github.com/duhu2000/dsh-mcp-connector-registry/blob/main/docs/ONBOARDING.md), or [contributing a fix](CONTRIBUTING.md).
+If the plugin helps you connect an MCP server faster, consider [starring the repository](https://github.com/Guojing6/dsh-mcp-manager/stargazers), [submitting a connector](https://github.com/duhu2000/dsh-mcp-connector-registry/blob/main/docs/ONBOARDING.md), or [contributing a fix](CONTRIBUTING.md).
 
 ## What MCP Connector provides
 
@@ -92,13 +92,13 @@ As of 2026-10-13, the public Registry publishes 109 connector descriptors. The p
 
 | Marketplace overview | Connector details and curated prompts |
 |---|---|
-| ![Marketplace overview](https://raw.githubusercontent.com/duhu2000/dsh-mcp-connector/main/docs/screenshots/01-market-overview.jpg) | ![Connector details](https://raw.githubusercontent.com/duhu2000/dsh-mcp-connector/main/docs/screenshots/02-connector-detail.jpg) |
+| ![Marketplace overview](https://raw.githubusercontent.com/Guojing6/dsh-mcp-manager/main/docs/screenshots/01-market-overview.jpg) | ![Connector details](https://raw.githubusercontent.com/Guojing6/dsh-mcp-manager/main/docs/screenshots/02-connector-detail.jpg) |
 | Tool discovery, descriptions, and scrolling | JSON import |
-| ![Tool discovery](https://raw.githubusercontent.com/duhu2000/dsh-mcp-connector/main/docs/screenshots/03-tool-discovery.jpg) | ![JSON import](https://raw.githubusercontent.com/duhu2000/dsh-mcp-connector/main/docs/screenshots/04-json-import.jpg) |
+| ![Tool discovery](https://raw.githubusercontent.com/Guojing6/dsh-mcp-manager/main/docs/screenshots/03-tool-discovery.jpg) | ![JSON import](https://raw.githubusercontent.com/Guojing6/dsh-mcp-manager/main/docs/screenshots/04-json-import.jpg) |
 | Unified tool search and sources | Parameter details and safe schema |
-| ![Unified tool search](https://raw.githubusercontent.com/duhu2000/dsh-mcp-connector/main/docs/screenshots/05-unified-tool-search.png) | ![Tool parameter details](https://raw.githubusercontent.com/duhu2000/dsh-mcp-connector/main/docs/screenshots/06-tool-parameters.png) |
+| ![Unified tool search](https://raw.githubusercontent.com/Guojing6/dsh-mcp-manager/main/docs/screenshots/05-unified-tool-search.png) | ![Tool parameter details](https://raw.githubusercontent.com/Guojing6/dsh-mcp-manager/main/docs/screenshots/06-tool-parameters.png) |
 | Connection diagnostics and last-success cache |  |
-| ![Connection diagnostics](https://raw.githubusercontent.com/duhu2000/dsh-mcp-connector/main/docs/screenshots/07-connection-diagnostics.png) |  |
+| ![Connection diagnostics](https://raw.githubusercontent.com/Guojing6/dsh-mcp-manager/main/docs/screenshots/07-connection-diagnostics.png) |  |
 
 Assets `01`–`04` preserve the historical `v0.2.37` marketplace snapshot. Assets `05`–`07` and the 43-second walkthrough come from the current `v0.2.46` credential-free UI harness. The harness mirrors the real 800px product panel, producing two cards per desktop row. It shows only public marketplace metadata, example prompts, and explicitly marked mock tool descriptions—never credentials, local paths, or query results. See [`docs/screenshots/README.md`](docs/screenshots/README.md) for provenance.
 
@@ -107,14 +107,16 @@ Assets `01`–`04` preserve the historical `v0.2.37` marketplace snapshot. Asset
 Requirements: DeepSeek Harness Desktop or web profile, and Node.js 20 or later.
 
 ```bash
-dsh plugin --profile web add dsh-mcp-connector
+dsh plugin --profile web add dsh-mcp-manager
 ```
 
 Or use the installer:
 
 ```bash
-bash <(curl -fsSL https://raw.githubusercontent.com/duhu2000/dsh-mcp-connector/main/install.sh)
+bash <(curl -fsSL https://raw.githubusercontent.com/Guojing6/dsh-mcp-manager/main/install.sh)
 ```
+
+> Note: the distribution identity is now `dsh-mcp-manager`, but that npm package is **not published yet**. Until the first publish, the install command above, the npm badges, and the current-version link below are unavailable; the historical public versions on npm were published as `dsh-mcp-connector`.
 
 Run the same command again to upgrade. Fully quit and restart DeepSeek Harness Desktop after installation or upgrade. For `dsh web`, stop the original process before starting it again; `EADDRINUSE 127.0.0.1:3080` means another instance is already listening.
 
@@ -159,7 +161,7 @@ The default bundle configuration is in `cordis.patch.yml`:
 
 ```yaml
 - id: mcp-connector
-  name: dsh-mcp-connector
+  name: dsh-mcp-manager
   config:
     catalogUrl: 'https://cdn.jsdelivr.net/gh/duhu2000/dsh-mcp-connector-registry@main/catalog.json'
     persistSecrets: true
@@ -202,7 +204,7 @@ npm run dev:ui
 
 Every Registry merge regenerates `catalog-stats.json`; an hourly workflow in this repository synchronizes the Chinese and English product copy plus a local stats snapshot. The static npm README updates with package releases, while the live badges above read the Registry directly and therefore stay current without another npm release.
 
-The current public version is [`dsh-mcp-connector@0.2.70`](https://www.npmjs.com/package/dsh-mcp-connector), with [GitHub Release v0.2.70](https://github.com/duhu2000/dsh-mcp-connector/releases/tag/v0.2.70).
+The current public version is [`dsh-mcp-manager@0.2.70`](https://www.npmjs.com/package/dsh-mcp-manager), with [GitHub Release v0.2.70](https://github.com/Guojing6/dsh-mcp-manager/releases/tag/v0.2.70).
 
 See [CHANGELOG.md](CHANGELOG.md) for version history and [docs/DESKTOP-E2E.md](docs/DESKTOP-E2E.md) for the Desktop release checklist.
 

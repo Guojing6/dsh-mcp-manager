@@ -18,14 +18,14 @@ OAuth 是否可用取决于服务商的客户端注册、账号权限与授权�
 
 详见[工具工作台教程](docs/USER-GUIDE.md#51-工具工作台统一查找工具)。工具页用于发现与诊断，不执行目标工具；参数摘要与原始安全缓存均有裁剪边界。
 
-[用户手册](docs/USER-GUIDE.md) · [第三方连接器上架指南](https://github.com/duhu2000/dsh-mcp-connector-registry/blob/main/docs/ONBOARDING.md) · [首次贡献](docs/FIRST-CONTRIBUTION.md) · [参与贡献](CONTRIBUTING.md) · [问题反馈](https://github.com/duhu2000/dsh-mcp-connector/issues)
+[用户手册](docs/USER-GUIDE.md) · [第三方连接器上架指南](https://github.com/duhu2000/dsh-mcp-connector-registry/blob/main/docs/ONBOARDING.md) · [首次贡献](docs/FIRST-CONTRIBUTION.md) · [参与贡献](CONTRIBUTING.md) · [问题反馈](https://github.com/Guojing6/dsh-mcp-manager/issues)
 
-[![CI](https://github.com/duhu2000/dsh-mcp-connector/actions/workflows/ci.yml/badge.svg)](https://github.com/duhu2000/dsh-mcp-connector/actions/workflows/ci.yml)
-[![npm](https://img.shields.io/npm/v/dsh-mcp-connector.svg)](https://www.npmjs.com/package/dsh-mcp-connector)
-[![npm downloads](https://img.shields.io/npm/dm/dsh-mcp-connector.svg)](https://www.npmjs.com/package/dsh-mcp-connector)
-[![GitHub stars](https://img.shields.io/github/stars/duhu2000/dsh-mcp-connector?style=flat)](https://github.com/duhu2000/dsh-mcp-connector/stargazers)
-[![GitHub forks](https://img.shields.io/github/forks/duhu2000/dsh-mcp-connector?style=flat)](https://github.com/duhu2000/dsh-mcp-connector/forks)
-[![GitHub Release](https://img.shields.io/github/v/release/duhu2000/dsh-mcp-connector)](https://github.com/duhu2000/dsh-mcp-connector/releases/latest)
+[![CI](https://github.com/Guojing6/dsh-mcp-manager/actions/workflows/ci.yml/badge.svg)](https://github.com/Guojing6/dsh-mcp-manager/actions/workflows/ci.yml)
+[![npm](https://img.shields.io/npm/v/dsh-mcp-manager.svg)](https://www.npmjs.com/package/dsh-mcp-manager)
+[![npm downloads](https://img.shields.io/npm/dm/dsh-mcp-manager.svg)](https://www.npmjs.com/package/dsh-mcp-manager)
+[![GitHub stars](https://img.shields.io/github/stars/Guojing6/dsh-mcp-manager?style=flat)](https://github.com/Guojing6/dsh-mcp-manager/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/Guojing6/dsh-mcp-manager?style=flat)](https://github.com/Guojing6/dsh-mcp-manager/forks)
+[![GitHub Release](https://img.shields.io/github/v/release/Guojing6/dsh-mcp-manager)](https://github.com/Guojing6/dsh-mcp-manager/releases/latest)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Registry connectors](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fduhu2000%2Fdsh-mcp-connector-registry%2Fmain%2Fcatalog-stats.json&query=%24.registryCount&label=Registry%20connectors&color=5865f2)](https://github.com/duhu2000/dsh-mcp-connector-registry/blob/main/catalog-stats.json)
 [![Marketplace cards](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fduhu2000%2Fdsh-mcp-connector-registry%2Fmain%2Fcatalog-stats.json&query=%24.marketCount&label=Marketplace%20cards&color=16a34a)](https://github.com/duhu2000/dsh-mcp-connector-registry/blob/main/catalog-stats.json)
@@ -33,7 +33,7 @@ OAuth 是否可用取决于服务商的客户端注册、账号权限与授权�
 ## 30 秒开始
 
 ```bash
-dsh plugin --profile web add dsh-mcp-connector
+dsh plugin --profile web add dsh-mcp-manager
 ```
 
 安装或升级后完全重启 DeepSeek Harness Desktop 或 `dsh web`，然后打开左侧「连接器」；也可从“设置 → 插件 → 插件配置 → MCP连接器”直接打开。
@@ -42,9 +42,9 @@ dsh plugin --profile web add dsh-mcp-connector
 
 [首次成功入口：安装 → 连接 → 找到工具 → 首次只读调用](docs/tutorials/README.md)。按任务深入：[三个可验收场景包](docs/tutorials/FIRST-SUCCESS-SCENARIOS.md) · [迁移现有 `mcpServers` JSON](docs/tutorials/JSON-MIGRATION.md) · [OAuth 授权诊断](docs/tutorials/OAUTH-DIAGNOSTICS.md) · [跨连接找工具与恢复](docs/tutorials/TOOL-SEARCH-RECOVERY.md) · [可信状态文案](docs/tutorials/TRUSTED-STATUS-COPY.md)。
 
-![MCP 连接器 43 秒演示](https://raw.githubusercontent.com/duhu2000/dsh-mcp-connector/main/docs/demo.gif)
+![MCP 连接器 43 秒演示](https://raw.githubusercontent.com/Guojing6/dsh-mcp-manager/main/docs/demo.gif)
 
-如果它帮你更快地接入 MCP Server，欢迎 [GitHub 点个 Star](https://github.com/duhu2000/dsh-mcp-connector/stargazers)、[提交新的连接器](https://github.com/duhu2000/dsh-mcp-connector-registry/blob/main/docs/ONBOARDING.md)或[参与贡献](CONTRIBUTING.md)。
+如果它帮你更快地接入 MCP Server，欢迎 [GitHub 点个 Star](https://github.com/Guojing6/dsh-mcp-manager/stargazers)、[提交新的连接器](https://github.com/duhu2000/dsh-mcp-connector-registry/blob/main/docs/ONBOARDING.md)或[参与贡献](CONTRIBUTING.md)。
 
 ## MCP连接器能做什么
 
@@ -93,13 +93,13 @@ dsh plugin --profile web add dsh-mcp-connector
 
 | 市场总览 | 连接器详情与精选 Prompt |
 |---|---|
-| ![市场总览](https://raw.githubusercontent.com/duhu2000/dsh-mcp-connector/main/docs/screenshots/01-market-overview.jpg) | ![连接器详情](https://raw.githubusercontent.com/duhu2000/dsh-mcp-connector/main/docs/screenshots/02-connector-detail.jpg) |
+| ![市场总览](https://raw.githubusercontent.com/Guojing6/dsh-mcp-manager/main/docs/screenshots/01-market-overview.jpg) | ![连接器详情](https://raw.githubusercontent.com/Guojing6/dsh-mcp-manager/main/docs/screenshots/02-connector-detail.jpg) |
 | 工具发现、描述与独立滚动 | JSON 导入 |
-| ![工具发现](https://raw.githubusercontent.com/duhu2000/dsh-mcp-connector/main/docs/screenshots/03-tool-discovery.jpg) | ![JSON 导入](https://raw.githubusercontent.com/duhu2000/dsh-mcp-connector/main/docs/screenshots/04-json-import.jpg) |
+| ![工具发现](https://raw.githubusercontent.com/Guojing6/dsh-mcp-manager/main/docs/screenshots/03-tool-discovery.jpg) | ![JSON 导入](https://raw.githubusercontent.com/Guojing6/dsh-mcp-manager/main/docs/screenshots/04-json-import.jpg) |
 | 统一工具搜索与来源 | 参数详情与安全 Schema |
-| ![统一工具搜索](https://raw.githubusercontent.com/duhu2000/dsh-mcp-connector/main/docs/screenshots/05-unified-tool-search.png) | ![工具参数详情](https://raw.githubusercontent.com/duhu2000/dsh-mcp-connector/main/docs/screenshots/06-tool-parameters.png) |
+| ![统一工具搜索](https://raw.githubusercontent.com/Guojing6/dsh-mcp-manager/main/docs/screenshots/05-unified-tool-search.png) | ![工具参数详情](https://raw.githubusercontent.com/Guojing6/dsh-mcp-manager/main/docs/screenshots/06-tool-parameters.png) |
 | 连接诊断与最后成功缓存 |  |
-| ![连接诊断](https://raw.githubusercontent.com/duhu2000/dsh-mcp-connector/main/docs/screenshots/07-connection-diagnostics.png) |  |
+| ![连接诊断](https://raw.githubusercontent.com/Guojing6/dsh-mcp-manager/main/docs/screenshots/07-connection-diagnostics.png) |  |
 
 `01`–`04` 保留 `v0.2.37` 的历史市场快照，`05`–`07` 与 43 秒演示来自 `v0.2.46` 当前无凭据 UI harness。桌面端一行 2 张卡片；只展示公开市场元数据、示例 Prompt 和明确标识的 Mock 工具说明，不包含凭据、本机路径或查询结果。详见 [`docs/screenshots/README.md`](docs/screenshots/README.md)。
 
@@ -108,16 +108,18 @@ dsh plugin --profile web add dsh-mcp-connector
 要求：DeepSeek Harness Desktop/web profile，Node.js 20 或更高版本。
 
 ```bash
-dsh plugin --profile web add dsh-mcp-connector
+dsh plugin --profile web add dsh-mcp-manager
 ```
 
 也可使用安装脚本：
 
 ```bash
-bash <(curl -fsSL https://raw.githubusercontent.com/duhu2000/dsh-mcp-connector/main/install.sh)
+bash <(curl -fsSL https://raw.githubusercontent.com/Guojing6/dsh-mcp-manager/main/install.sh)
 ```
 
 重复执行安装命令即可升级。安装或升级后需完全退出并重启 DeepSeek Harness Desktop；使用 `dsh web` 时需先停止原进程再启动，`EADDRINUSE 127.0.0.1:3080` 表示已有实例正在运行。
+
+> 注意：本仓库的分发标识已改为 `dsh-mcp-manager`，但该 npm 包**尚未发布**。首次发布前，上面的安装命令、npm 徽章和下方“当前公开版本”链接都不可用；npm 上历史公开版本仍以 `dsh-mcp-connector` 发布。
 
 ## 使用
 
@@ -154,7 +156,7 @@ Bundle 默认配置位于 `cordis.patch.yml`：
 
 ```yaml
 - id: mcp-connector
-  name: dsh-mcp-connector
+  name: dsh-mcp-manager
   config:
     catalogUrl: 'https://cdn.jsdelivr.net/gh/duhu2000/dsh-mcp-connector-registry@main/catalog.json'
     persistSecrets: true
@@ -197,7 +199,7 @@ npm run dev:ui
 
 公共 Registry 每次合并后会生成 `catalog-stats.json`；本仓库的定时工作流每小时同步中英文介绍和统计快照。npm 页面中的静态正文随版本发布更新，上方动态统计徽标则直接读取 Registry，可在不发布新 npm 版本时保持实时数量一致。
 
-当前公开版本为 [`dsh-mcp-connector@0.2.70`](https://www.npmjs.com/package/dsh-mcp-connector)，对应 [GitHub Release v0.2.70](https://github.com/duhu2000/dsh-mcp-connector/releases/tag/v0.2.70)。
+当前公开版本为 [`dsh-mcp-manager@0.2.70`](https://www.npmjs.com/package/dsh-mcp-manager)，对应 [GitHub Release v0.2.70](https://github.com/Guojing6/dsh-mcp-manager/releases/tag/v0.2.70)。
 
 版本能力与变更记录见 [CHANGELOG.md](CHANGELOG.md)。
 Desktop 发版回归见 [docs/DESKTOP-E2E.md](docs/DESKTOP-E2E.md)。

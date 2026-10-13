@@ -2,7 +2,7 @@
 
 ## Private reporting / 私密披露
 
-Please report suspected vulnerabilities through [GitHub Private Vulnerability Reporting](https://github.com/duhu2000/dsh-mcp-connector/security/advisories/new).
+Please report suspected vulnerabilities through [GitHub Private Vulnerability Reporting](https://github.com/Guojing6/dsh-mcp-manager/security/advisories/new).
 
 疑似安全漏洞请通过上述私密入口提交，不要在公开 Issue、PR 或讨论中发布利用步骤、PoC、凭据或真实业务数据。如入口不可用，可公开提交仅说明“需要私密披露渠道”的请求，不附技术细节。
 
