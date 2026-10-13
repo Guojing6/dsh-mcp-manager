@@ -1085,7 +1085,20 @@ test('检测到旧企查查 OAuth 插件仍启用时阻断同名 Server，避免
   const { ctx, tools, logs, loader } = makePluginContext();
   loader.entries.set('qcc-mcp-oauth', { id: 'qcc-mcp-oauth', disabled: false, options: { config: {} } });
   const { apply } = await import('../lib/index.js');
-  await apply(ctx, baseConfig());
+  // 随包目录不再内置连接器卡片，冲突检测所需的描述由本用例自己提供。
+  const connector = {
+    id: 'qcc-company',
+    name: '企查查·企业工商',
+    category: '企业数据',
+    auth: { mode: 'oauth2-pkce', issuer: 'https://agent.qcc.com' },
+    servers: [{
+      serverKey: 'company',
+      url: 'https://agent.qcc.com/mcp/company/stream',
+      serverName: 'qcc-company',
+      transport: 'streamable-http',
+    }],
+  };
+  await apply(ctx, baseConfig({ connectors: [connector] }));
   const result = await tools.defs.get('mcp_connector_connect').execute({ connectorId: 'qcc-company' }, { signal: undefined });
   assert.equal(result.ok, false);
   assert.equal(result.detail.kind, 'plugin-conflict');

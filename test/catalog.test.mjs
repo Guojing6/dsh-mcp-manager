@@ -1,6 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { createServer } from 'node:http';
+import { readFile } from 'node:fs/promises';
 import {
   loadBundledCatalog,
   listCatalog,
@@ -23,53 +24,42 @@ function desc(id, { published = true, featured = false, category = '其他' } = 
   });
 }
 
-test('内置目录加载 + published 过滤', () => {
+test('随包目录不再内置任何连接器卡片', () => {
   const bundled = loadBundledCatalog();
-  assert.ok(bundled.length >= 3, '内置目录应至少 3 条');
-  const published = listCatalog(bundled, {});
-  assert.ok(published.every((d) => d.published !== false));
-  assert.ok(!published.some((d) => d.id === 'legacy-internal'), 'published:false 不应出现');
-  assert.ok(published.some((d) => d.id === 'qcc-company'));
-  const qccCards = published.filter((d) => d.id.startsWith('qcc-'));
-  assert.equal(qccCards.length, 4, '内置目录应包含 4 张企查查卡片');
-  assert.ok(qccCards.every((d) => d.auth.mode === 'oauth2-pkce'), '4 张企查查卡片应全部使用 OAuth 一键授权');
-  assert.ok(qccCards.every((d) => d.auth.grantSharing === 'issuer'), '4 张企查查 OAuth 卡片应共享同 issuer OAuth Grant');
-  assert.ok(qccCards.every((d) => d.icon === '/mcp-connector/ui/assets/qcc-logo.svg'), '4 张卡片统一使用内置企查查 Logo');
-  assert.ok(qccCards.every((d) => d.prompts.length > 0), '4 张卡片均应提供可快速体验的 Prompt');
-  assert.ok(qccCards.flatMap((d) => d.prompts).some((prompt) => prompt.text.includes('{{')), 'Prompt 应使用参数模板');
-  assert.ok(!qccCards.flatMap((d) => d.prompts).some((prompt) => /小米科技|华为技术|雷军/.test(prompt.text)), '目录不应再硬编码示例主体');
-  assert.ok(qccCards.every((d) => d.promptVariables.every((variable) => variable.required === false || variable.default)), '内置 Prompt 必填参数应提供可直接试用的默认示例');
-  assert.equal(published.find((d) => d.id === 'qcc-legal')?.category, '法律合规');
-  const qccDocument = published.find((d) => d.id === 'qcc-document');
-  assert.equal(qccDocument?.category, '效率工具');
-  assert.equal(qccDocument?.name, '企查查·智能文档解析');
-  assert.equal(qccDocument?.homepage, 'https://agent.qcc.com/doc');
-  assert.equal(qccDocument?.auth.mode, 'oauth2-pkce');
-  assert.equal(qccDocument?.auth.issuer, 'https://agent.qcc.com');
-  assert.equal(qccDocument?.auth.scope, 'mcp:tools');
-  assert.equal(qccDocument?.servers.length, 2, '智能文档解析应同时配置远程 URL 与本机文件入口');
-  assert.deepEqual(qccDocument?.servers.map((server) => server.transport), ['streamable-http', 'stdio']);
-  assert.deepEqual(qccDocument?.servers[1]?.args, ['-y', 'qcc-document-mcp']);
-  assert.equal(qccDocument?.servers[1]?.oauthResource, 'https://agent.qcc.com/mcp/document/stream');
-  assert.equal(qccDocument?.servers[1]?.oauthTokenEnv, 'QCC_DOCUMENT_AUTHORIZATION');
-  assert.deepEqual(qccDocument?.servers[1]?.credentialBindings, {});
-  const pkulaw = published.find((d) => d.id === 'pkulaw-legal');
+  assert.equal(bundled.length, 0, '随包目录不再内置连接器卡片');
+  assert.deepEqual(listCatalog(bundled, {}), [], '空目录不应产出任何已上架卡片');
+  assert.deepEqual(listCatalog(bundled, { publishedOnly: false }), [], '空目录不应产出任何卡片');
+  // 空目录不得让目录合并与查询崩溃
+  assert.deepEqual(mergeCatalog([bundled]), []);
+  assert.deepEqual(listCatalog(mergeCatalog([bundled, []])), []);
+});
+
+test('市场卡片由远程 Registry 承载（北大法宝与 Wind）', async () => {
+  const bundled = loadBundledCatalog();
+  for (const id of ['pkulaw-legal', 'wind-stock-data', 'legacy-internal']) {
+    assert.ok(!bundled.some((d) => d.id === id), `随包目录不应再内置 ${id}`);
+  }
+  const registry = JSON.parse(await readFile(new URL('../registry/catalog.json', import.meta.url), 'utf8'));
+  const remote = registry.connectors.map(normalizeConnectorDescriptor);
+  const pkulaw = remote.find((d) => d.id === 'pkulaw-legal');
   assert.equal(pkulaw?.auth.mode, 'bearer', '北大法宝应以 Bearer Token 方式接入');
   assert.equal(pkulaw?.auth.credentialName, '北大法宝 Access Token');
   assert.equal(pkulaw?.servers.length, 9, '北大法宝卡片应一次配置官网公开的 9 个 Server');
-  assert.equal(pkulaw?.icon, '/mcp-connector/ui/assets/pkulaw-logo.png', '北大法宝应使用内置官网 Logo');
-  const wind = published.find((d) => d.id === 'wind-stock-data');
+  assert.equal(pkulaw?.icon, '/mcp-connector/ui/assets/pkulaw-logo.png', '北大法宝仍使用随包 Logo 资产');
+  assert.equal(pkulaw?.featured, true, '北大法宝应保持推荐位');
+  const wind = remote.find((d) => d.id === 'wind-stock-data');
   assert.equal(wind?.auth.mode, 'bearer', 'Wind 股票数据应以 Bearer Wind Key 接入');
   assert.equal(wind?.auth.credentialName, 'Wind API Key（个人密钥）');
   assert.equal(wind?.servers.length, 1, 'Wind 股票数据卡片只接入官网当前公开的股票 MCP Server');
   assert.equal(wind?.servers[0]?.url, 'https://mcp.wind.com.cn/vserver_stock_data/mcp/');
   assert.equal(wind?.servers[0]?.headers.Accept, 'application/json, text/event-stream');
-  assert.deepEqual(
-    published.filter((d) => d.featured).map((d) => d.id).sort(),
-    ['pkulaw-legal', 'qcc-company', 'qcc-document', 'qcc-legal', 'qcc-tender', 'wind-stock-data'],
-    '推荐位应严格保留 4 张企查查卡片、北大法宝与 Wind',
-  );
-  assert.deepEqual(published.slice(0, 6).map((d) => d.id), ['qcc-company', 'qcc-legal', 'qcc-tender', 'qcc-document', 'pkulaw-legal', 'wind-stock-data'], 'featured 连接器应保留市场声明顺序');
+  assert.equal(wind?.icon, '/mcp-connector/ui/assets/wind-logo.png', 'Wind 仍使用随包 Logo 资产');
+  assert.equal(wind?.featured, true, 'Wind 应保持推荐位');
+
+  const merged = listCatalog(mergeCatalog([bundled, remote]));
+  assert.deepEqual(merged.map((d) => d.id), ['pkulaw-legal', 'wind-stock-data'], '随包为空时市场只剩远程 Registry 卡片');
+  assert.deepEqual(merged.filter((d) => d.featured).map((d) => d.id), ['pkulaw-legal', 'wind-stock-data'], '推荐位由远程 Registry 的 featured 决定');
+  assert.ok(!merged.some((d) => d.id.startsWith('qcc-')), '不应再出现任何内置企查查卡片');
 });
 
 test('mergeCatalog 优先级 + 本地覆盖', () => {

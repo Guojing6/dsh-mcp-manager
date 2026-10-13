@@ -6,6 +6,7 @@ import test from 'node:test';
 import {
   normalizeStats,
   renderChineseStats,
+  renderEnglishStats,
   syncRegistryStats,
 } from '../scripts/sync-registry-stats.mjs';
 
@@ -25,6 +26,22 @@ test('validates count relationships and safe category names', () => {
   assert.throws(() => normalizeStats({ ...stats, marketCount: 81 }), /marketCount must equal/);
   assert.throws(() => normalizeStats({ ...stats, categoryNames: [...stats.categoryNames.slice(0, 8), '[bad]'] }), /unsafe value/);
   assert.match(renderChineseStats(stats), /78 条.*82 张.*9 类.*6 张/s);
+});
+
+test('accepts a plugin that bundles no connector cards', () => {
+  const remoteOnly = { ...stats, registryCount: 109, bundledUniqueCount: 0, marketCount: 109, featuredCount: 2 };
+  assert.deepEqual(normalizeStats(remoteOnly), remoteOnly);
+  const chinese = renderChineseStats(remoteOnly);
+  assert.match(chinese, /109 条.*109 张.*9 类.*2 张/s);
+  assert.match(chinese, /不再内置连接器卡片/);
+  assert.doesNotMatch(chinese, /企查查/);
+  const english = renderEnglishStats(remoteOnly);
+  assert.match(english, /publishes 109 connector descriptors.*exposes 109 cards/s);
+  assert.match(english, /no longer bundles connector cards/);
+  assert.doesNotMatch(english, /Qichacha/);
+  assert.match(renderChineseStats(stats), /随包内置的 4 张卡片/);
+  assert.throws(() => normalizeStats({ ...stats, bundledUniqueCount: -1 }), /non-negative integer/);
+  assert.throws(() => normalizeStats({ ...stats, bundledUniqueCount: 0, marketCount: 113 }), /marketCount must equal/);
 });
 
 test('syncs the Chinese and English generated blocks plus local snapshot', async (t) => {

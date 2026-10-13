@@ -19,7 +19,12 @@ async function loadCatalogFile(path) {
   return items.map((item) => auditDescriptor(normalizeConnectorDescriptor(auditRawDescriptor(item))));
 }
 
-const catalogSources = [await loadCatalogFile(join(root, 'catalog/catalog.json'))];
+// 随包目录不再内置连接器卡片，市场内容全部来自远程 Registry；
+// 这里用仓库内的 registry 产物复刻生产环境的合并结果（无凭据 Mock）。
+const catalogSources = [
+  await loadCatalogFile(join(root, 'catalog/catalog.json')),
+  await loadCatalogFile(join(root, 'registry/catalog.json')),
+];
 if (process.env.MCP_CONNECTOR_UI_CATALOG_PATH) {
   catalogSources.push(await loadCatalogFile(process.env.MCP_CONNECTOR_UI_CATALOG_PATH));
 }

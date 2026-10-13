@@ -16,12 +16,20 @@ function positiveInteger(value, name) {
   return value;
 }
 
+/** 随包内置卡片数允许为 0：目录可以完全由远程 Registry 承载。 */
+function nonNegativeInteger(value, name) {
+  if (!Number.isSafeInteger(value) || value < 0 || value > 100_000) {
+    throw new Error(`${name} must be a non-negative integer`);
+  }
+  return value;
+}
+
 export function normalizeStats(value) {
   if (!value || Array.isArray(value) || value.schemaVersion !== 1) {
     throw new Error('registry stats must use schemaVersion 1');
   }
   const registryCount = positiveInteger(value.registryCount, 'registryCount');
-  const bundledUniqueCount = positiveInteger(value.bundledUniqueCount, 'bundledUniqueCount');
+  const bundledUniqueCount = nonNegativeInteger(value.bundledUniqueCount, 'bundledUniqueCount');
   const marketCount = positiveInteger(value.marketCount, 'marketCount');
   const featuredCount = positiveInteger(value.featuredCount, 'featuredCount');
   const categoryCount = positiveInteger(value.categoryCount, 'categoryCount');
@@ -55,11 +63,20 @@ export function normalizeStats(value) {
 }
 
 export function renderChineseStats(stats) {
-  return `${STATS_START}\n截至 ${stats.updatedOn}，公共 Registry 已发布 ${stats.registryCount} 条连接器描述；与随包的 ${stats.bundledUniqueCount} 张企查查卡片合并去重后，市场页可浏览 ${stats.marketCount} 张卡片，覆盖${stats.categoryNames.join('、')} ${stats.categoryCount} 类。推荐位严格保留 4 张企查查卡片、北大法宝和 Wind，共 ${stats.featuredCount} 张；其他连接器按业务分类展示。Registry 可独立持续更新，实际数量以客户端刷新后的市场页签徽标和上方实时统计徽标为准。\n${STATS_END}`;
+  const merged = stats.bundledUniqueCount > 0
+    ? `；与随包内置的 ${stats.bundledUniqueCount} 张卡片合并去重后，市场页可浏览 ${stats.marketCount} 张卡片`
+    : `，市场页可浏览 ${stats.marketCount} 张卡片`;
+  const bundling = stats.bundledUniqueCount > 0
+    ? ''
+    : '本插件不再内置连接器卡片，市场内容完全来自远程 Registry。';
+  return `${STATS_START}\n截至 ${stats.updatedOn}，公共 Registry 已发布 ${stats.registryCount} 条连接器描述${merged}，覆盖${stats.categoryNames.join('、')} ${stats.categoryCount} 类，其中推荐位 ${stats.featuredCount} 张。${bundling}Registry 可独立持续更新，实际数量以客户端刷新后的市场页签徽标和上方实时统计徽标为准。\n${STATS_END}`;
 }
 
 export function renderEnglishStats(stats) {
-  return `${STATS_START}\nAs of ${stats.updatedOn}, the public Registry publishes ${stats.registryCount} connector descriptors. After merging and deduplicating them with the ${stats.bundledUniqueCount} bundled Qichacha cards, the Marketplace exposes ${stats.marketCount} cards across ${stats.categoryCount} business categories. Recommendations remain limited to the four Qichacha cards, PKULaw, and Wind, for ${stats.featuredCount} featured cards in total. The Registry evolves independently; the badge shown after a client refresh and the live badges above are the authoritative current counts.\n${STATS_END}`;
+  const merged = stats.bundledUniqueCount > 0
+    ? ` After merging and deduplicating them with the ${stats.bundledUniqueCount} bundled cards, the Marketplace exposes ${stats.marketCount} cards`
+    : ` The plugin no longer bundles connector cards, and the Marketplace exposes ${stats.marketCount} cards`;
+  return `${STATS_START}\nAs of ${stats.updatedOn}, the public Registry publishes ${stats.registryCount} connector descriptors.${merged} across ${stats.categoryCount} business categories, with ${stats.featuredCount} featured cards. The Registry evolves independently; the badge shown after a client refresh and the live badges above are the authoritative current counts.\n${STATS_END}`;
 }
 
 export function replaceStatsBlock(text, replacement) {

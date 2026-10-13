@@ -4,6 +4,14 @@
 
 ## [Unreleased]
 
+### Removed
+
+- 随包内置目录不再包含任何连接器卡片（原 4 张企查查、北大法宝、Wind 与下架演示卡）：市场内容完全来自远程 Registry，并因此让每周健康巡检恢复真实信号。
+
+### Changed
+
+- 统计口径同步：`bundledUniqueCount` 允许为 0，README 统计块与推荐位说明改为“市场内容完全来自远程 Registry”。独立 Registry 仓库需同步 `catalog-stats.json`，否则定时同步会写回旧口径。
+
 ## [0.2.70] - 2026-10-08
 
 ### Fixed
